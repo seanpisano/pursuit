@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<!-- Root HTML element: defines the document as HTML5 -->
+<html lang="en">
+<!-- Head section: contains meta information, title, styles, and scripts -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Art For Your Mouth</title>
+  <style>
+    /* CSS Custom Properties: defines color variables and other reusable values xxx*/
+
+    :root {
+      --bg: #000000;
+      --green: #2f7d1f;
+      --green-light: #5baa3c;
+      --orange: #f45a18;
+      --orange-light: #ff8a2a;
+      --cream: #f4e4c6;
+      --text: #f7f7f7;
+      --muted: rgba(255,255,255,0.72);
+      --border: rgba(255,255,255,0.14);
+      --shadow: 0 20px 60px rgba(0,0,0,0.45);
+    }
+
+    /* Global reset: sets box-sizing and resets margins/padding */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Body styles: sets layout, background, and typography */
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(47,125,31,0.14), transparent 30%),
+        radial-gradient(circle at bottom, rgba(244,90,24,0.18), transparent 35%),
+        var(--bg);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 20px;
+    }
+
+    /* Splash wrapper: main container for the page content */
+
+    .splash-wrap {
+      width: 100%;
+      max-width: 980px;
+      text-align: center;
+    }
+
+    /* Logo block styles: positions and styles the logo image */
+
+    .logo-block {
+      margin-bottom: 28px;
+    }
+
+    .logo-block img {
+      width: min(100%, 560px);
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.45));
+    }
+
+    /* Search panel styles: background, border, and layout for the search section */
+
+    .search-panel {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .search-row {
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .search-field {
+      position: relative;
+    }
+
+    .search-field input {
+      width: 100%;
+      height: 60px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      padding: 0 20px;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.25s ease;
+    }
+
+    .search-field input::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+
+    .search-field input:focus,
+    .search-select select:focus {
+      border-color: rgba(244,90,24,0.8);
+      box-shadow: 0 0 0 4px rgba(244,90,24,0.14);
+    }
+
+    .search-select select {
+      width: 100%;
+      height: 60px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      padding: 0 16px;
+      font-size: 1rem;
+      outline: none;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .search-select option {
+      color: #000;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid rgba(91,170,60,0.35);
+      background: rgba(47,125,31,0.12);
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .tagline {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* Media query for tablets and smaller screens */
+
+    @media (max-width: 700px) {
+      .search-row {
+        grid-template-columns: 1fr;
+      }
+
+      .search-panel {
+        padding: 16px;
+      }
+
+      .nav-links a {
+        width: calc(50% - 6px);
+      }
+    }
+
+    /* Media query for mobile devices */
+
+    @media (max-width: 480px) {
+      body {
+        padding: 20px 14px;
+      }
+
+      .logo-block img {
+        width: 100%;
+      }
+
+      .nav-links a {
+        width: 100%;
+      }
+
+      .search-field input,
+      .search-select select {
+        height: 56px;
+      }
+    }
+
+    /* Blog space styles: layout and appearance for the blog posts section */
+
+    .blog-space {
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    .blog-space h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .blog-space article {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .blog-space h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+  </style>
+<!-- TODO: Add description for head section -->
+</head>
+<!-- Body section: contains the visible content of the webpage -->
+<body>
+  <!-- Main content wrapper: centers and contains the primary page content -->
+  <main class="splash-wrap">
+    <!-- Logo block: displays the site logo -->
+    <div class="logo-block">
+      <img src="assets/imgs/logo.png" alt="Art For Your Mouth logo" />
+    </div>
+
+    <!-- Search panel: contains search functionality and navigation -->
+    <section class="search-panel">
+      <!-- Search row: input field and dropdown for search options -->
+      <div class="search-row">
+        <div class="search-field">
+          <input type="text" placeholder="Search for recipes, flavors, ingredients, or inspiration" />
+        </div>
+
+        <div class="search-select">
+          <select aria-label="Search style">
+            <option>Search</option>
+            <option>Food Style 1</option>
+            <option>Food Style 2</option>
+            <option>Food Style 3</option>
+            <option>Food Style 4</option>
+            <option>Food Style 5</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Navigation links: quick access to different sections of the site -->
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#who">Who</a>
+        <a href="#what">What</a>
+        <a href="#where">Where</a>
+        <a href="#when">When</a>
+        <a href="#why">Why</a>
+        <a href="#how">How</a>
+      </nav>
+
+      <!-- Tagline: inspirational quote or slogan -->
+      <p class="tagline">Because boring food is a waste of time.</p>
+
+      <!-- Blog space: section for displaying blog posts and articles -->
+      <section class="blog-space">
+        <!-- Blog posts heading -->
+        <h2>Latest Blog Posts</h2>
+        <!-- Sample blog post article -->
+        <article>
+          <!-- Blog post title -->
+          <h3>Sample Blog Post</h3>
+          <!-- Blog post excerpt or description -->
+          <p>Discover new recipes and culinary inspiration.</p>
+
+          <!-- TODO: Add more detailed description for blog post -->
+        </article>
+      </section>
+    </section>
+  <!-- TODO: Add description for main content -->
+  </main>
+<!-- End of body section -->
+</body>
+<!-- End of HTML document -->
+</html>
