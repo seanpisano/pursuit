@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Project Creation</title>
+  <style>
+    :root{
+      --light-green:#9EE493;
+      --frosted-mint:#DAF7DC;
+      --ash-grey:#ABC8C0;
+      --dusty-lavender:#70566D;
+      --midnight-violet:#42273B;
+
+      --bg: var(--frosted-mint);
+      --card: rgba(255,255,255,.55);
+      --stroke: rgba(66,39,59,.18);
+      --text: #1f1a1e;
+      --muted: rgba(31,26,30,.7);
+
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(66,39,59,.10);
+      --focus: 0 0 0 3px rgba(158,228,147,.45);
+      --focus2: 0 0 0 3px rgba(112,86,109,.28);
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(158,228,147,.35), transparent 55%),
+        radial-gradient(900px 500px at 80% 15%, rgba(171,200,192,.35), transparent 55%),
+        radial-gradient(900px 600px at 50% 100%, rgba(112,86,109,.12), transparent 60%),
+        var(--bg);
+      min-height:100vh;
+      padding:32px 14px;
+    }
+
+    .wrap{
+      max-width:760px;
+      margin:0 auto;
+    }
+
+    .titlebar{
+      background: linear-gradient(90deg, rgba(158,228,147,.75), rgba(218,247,220,.75));
+      border:1px solid var(--stroke);
+      border-radius: var(--radius);
+      padding:18px 22px;
+      box-shadow: var(--shadow);
+      margin-bottom:18px;
+    }
+
+    h1{
+      margin:0;
+      font-weight:800;
+      letter-spacing:.2px;
+      font-size:34px;
+    }
+
+    .panel{
+      background: var(--card);
+      border:1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:20px 22px;
+    }
+
+    .field{
+      margin-bottom:16px;
+    }
+
+    label{
+      display:block;
+      font-weight:700;
+      margin-bottom:8px;
+    }
+
+    input[type="text"], textarea{
+      width:100%;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.75);
+      border-radius: 12px;
+      padding:12px 12px;
+      font-size:16px;
+      outline:none;
+      transition: box-shadow .15s ease, border-color .15s ease;
+    }
+
+    textarea{
+      min-height:120px;
+      resize:vertical;
+    }
+
+    input[type="text"]:focus, textarea:focus{
+      box-shadow: var(--focus);
+      border-color: rgba(158,228,147,.9);
+    }
+
+    .divider{
+      height:1px;
+      background: rgba(66,39,59,.12);
+      margin:18px 0;
+    }
+
+    details{
+      border:1px solid var(--stroke);
+      border-radius: var(--radius);
+      overflow:hidden;
+      background: rgba(255,255,255,.45);
+      margin:14px 0;
+    }
+
+    summary{
+      list-style:none;
+      cursor:pointer;
+      user-select:none;
+      padding:14px 16px;
+      font-weight:800;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    summary::-webkit-details-marker{ display:none; }
+
+    .chev{
+      width:0;
+      height:0;
+      border-left:6px solid transparent;
+      border-right:6px solid transparent;
+      border-top:8px solid rgba(31,26,30,.75);
+      transition: transform .15s ease;
+    }
+
+    details[open] .chev{ transform: rotate(180deg); }
+
+    .details-body{
+      padding:14px 16px 16px;
+      border-top:1px solid rgba(66,39,59,.12);
+    }
+
+    .task-grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:12px;
+    }
+
+    .inline-row{
+      display:grid;
+      grid-template-columns: 170px 1fr;
+      gap:10px;
+      align-items:center;
+    }
+
+    .inline-row .k{
+      font-weight:800;
+      color:var(--muted);
+    }
+
+    .time-row{
+      display:grid;
+      grid-template-columns: 170px 1fr 160px;
+      gap:10px;
+      align-items:center;
+    }
+
+    .time-pill{
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.75);
+      border-radius: 12px;
+      padding:12px 12px;
+      font-variant-numeric: tabular-nums;
+      letter-spacing:.5px;
+    }
+
+    .btn{
+      border:1px solid var(--stroke);
+      border-radius: 12px;
+      padding:12px 14px;
+      font-weight:800;
+      font-size:16px;
+      cursor:pointer;
+      transition: transform .05s ease, filter .15s ease, box-shadow .15s ease;
+      box-shadow: 0 10px 22px rgba(66,39,59,.10);
+    }
+    .btn:active{ transform: translateY(1px); }
+
+    .btn-green{
+      background: linear-gradient(180deg, rgba(158,228,147,.95), rgba(158,228,147,.75));
+      color: #0f1b12;
+    }
+    .btn-purple{
+      background: linear-gradient(180deg, rgba(112,86,109,.95), rgba(66,39,59,.95));
+      color: #fff;
+      border-color: rgba(66,39,59,.35);
+    }
+
+    .btn-green:focus{ outline:none; box-shadow: var(--focus); }
+    .btn-purple:focus{ outline:none; box-shadow: var(--focus2); }
+
+    /* Task section color accents */
+    .daily summary{
+      background: linear-gradient(90deg, rgba(158,228,147,.55), rgba(218,247,220,.35));
+    }
+    .working summary{
+      background: linear-gradient(90deg, rgba(112,86,109,.55), rgba(66,39,59,.25));
+      color:#1f1a1e;
+    }
+
+    .actions{
+      display:flex;
+      gap:14px;
+      justify-content:space-between;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+    .actions .btn{
+      flex: 1 1 240px;
+      text-align:center;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width:560px){
+      h1{ font-size:28px; }
+      .inline-row, .time-row{
+        grid-template-columns: 1fr;
+      }
+      .time-row{ grid-template-columns: 1fr; }
+      .time-pill{ width:100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="titlebar">
+      <h1>Project Creation</h1>
+    </div>
+
+    <div class="panel">
+      <div class="field">
+        <label for="projectName">Project Name:</label>
+        <input id="projectName" type="text" placeholder="Project Name" />
+      </div>
+
+      <div class="field">
+        <label for="about">About:</label>
+        <textarea id="about" placeholder=""></textarea>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Add Daily Task -->
+      <details class="daily" open>
+        <summary>
+          <span>Add Daily Task</span>
+          <span class="chev" aria-hidden="true"></span>
+        </summary>
+        <div class="details-body">
+          <div class="task-grid">
+            <div class="inline-row">
+              <div class="k">Task Name:</div>
+              <input type="text" placeholder="" />
+            </div>
+
+            <div class="inline-row">
+              <div class="k">Task Function:</div>
+              <input type="text" placeholder="" />
+            </div>
+
+            <div class="time-row">
+              <div class="k">Dedicated Time:</div>
+              <div class="time-pill">00:00:00</div>
+              <button class="btn btn-green" type="button">Add Task</button>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- Add Working Task -->
+      <details class="working" open>
+        <summary>
+          <span>Add Working Task</span>
+          <span class="chev" aria-hidden="true"></span>
+        </summary>
+        <div class="details-body">
+          <div class="task-grid">
+            <div class="inline-row">
+              <div class="k">Task Name:</div>
+              <input type="text" placeholder="" />
+            </div>
+
+            <div class="inline-row">
+              <div class="k">Task Function:</div>
+              <input type="text" placeholder="" />
+            </div>
+
+            <div class="time-row">
+              <div class="k">Dedicated Time:</div>
+              <div class="time-pill">00:00:00</div>
+              <button class="btn btn-purple" type="button">Add Task</button>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <div class="divider"></div>
+
+      <div class="actions">
+        <button class="btn btn-green" type="button">Create Project</button>
+        <button class="btn btn-purple" type="button">Delete Project</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
