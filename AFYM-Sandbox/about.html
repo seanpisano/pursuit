@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Art For Your Mouth | About</title>
+  <style>
+    :root {
+      --bg: #000000;
+      --green: #2f7d1f;
+      --green-light: #5baa3c;
+      --orange: #f45a18;
+      --orange-light: #ff8a2a;
+      --cream: #f4e4c6;
+      --text: #f7f7f7;
+      --muted: rgba(255,255,255,0.72);
+      --border: rgba(255,255,255,0.14);
+      --shadow: 0 20px 60px rgba(0,0,0,0.45);
+      --panel: rgba(255,255,255,0.04);
+      --panel-strong: rgba(255,255,255,0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(47,125,31,0.14), transparent 30%),
+        radial-gradient(circle at bottom, rgba(244,90,24,0.18), transparent 35%),
+        var(--bg);
+      color: var(--text);
+      padding: 32px 20px 60px;
+    }
+
+    .page-wrap {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .site-header {
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .site-header img {
+      width: min(100%, 420px);
+      height: auto;
+      display: block;
+      margin: 0 auto 18px;
+      filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.45));
+    }
+
+    .top-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .top-nav a {
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid rgba(91,170,60,0.35);
+      background: rgba(47,125,31,0.12);
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: 0.25s ease;
+    }
+
+    .top-nav a:hover,
+    .top-nav a:focus,
+    .top-nav a.active {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .search-row {
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      gap: 14px;
+      align-items: center;
+      margin-top: 18px;
+    }
+
+    .search-field input {
+      width: 100%;
+      height: 60px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      padding: 0 20px;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.25s ease;
+    }
+
+    .search-field input::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+
+    .search-field input:focus,
+    .search-select select:focus {
+      border-color: rgba(244,90,24,0.8);
+      box-shadow: 0 0 0 4px rgba(244,90,24,0.14);
+    }
+
+    .search-select select {
+      width: 100%;
+      height: 60px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      padding: 0 16px;
+      font-size: 1rem;
+      outline: none;
+      cursor: pointer;
+      transition: 0.25s ease;
+      appearance: none;
+    }
+
+    .search-select option {
+      color: #000;
+    }
+
+    .about-shell {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .hero-image {
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--panel-strong);
+      min-height: 420px;
+      position: relative;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .eyebrow {
+      color: var(--orange-light);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.8rem;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      line-height: 1.05;
+      color: var(--cream);
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(244,90,24,0.12);
+      border: 1px solid rgba(244,90,24,0.35);
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(120px, 1fr));
+      gap: 12px;
+    }
+
+    .meta-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 14px;
+    }
+
+    .meta-card span {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 5px;
+    }
+
+    .meta-card strong {
+      font-size: 1rem;
+      color: var(--cream);
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 24px;
+    }
+
+    .panel {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 22px;
+    }
+
+    .panel h2 {
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+      color: var(--cream);
+    }
+
+    .panel p {
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .panel p:last-child {
+      margin-bottom: 0;
+    }
+
+    .bullet-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .bullet-list li {
+      padding-left: 18px;
+      position: relative;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .bullet-list li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green-light);
+      position: absolute;
+      left: 0;
+      top: 9px;
+    }
+
+    .quote-block {
+      margin-top: 24px;
+      padding: 20px;
+      border-radius: 18px;
+      background: rgba(244,90,24,0.08);
+      border: 1px solid rgba(244,90,24,0.22);
+    }
+
+    .quote-block p {
+      font-size: 1.1rem;
+      color: var(--cream);
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    .footer-note {
+      margin-top: 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image {
+        min-height: 280px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .search-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      body {
+        padding: 20px 14px 40px;
+      }
+
+      .about-shell {
+        padding: 16px;
+      }
+
+      .panel {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-wrap">
+    <header class="site-header">
+      <a href="index.html">
+        <img src="assets/imgs/logo.png" alt="Art For Your Mouth logo" />
+      </a>
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="about.html" class="active">About</a>
+        <a href="prep.html">Prep</a>
+        <a href="spices.html">Spices</a>
+        <a href="meats.html">Meats</a>
+        <a href="vegtables.html">Vegtables</a>
+        <a href="recipe.html">Recipes</a>
+      </nav>
+
+      <div class="search-row">
+        <div class="search-field">
+          <input type="text" placeholder="Search for recipes, flavors, ingredients, or inspiration" />
+        </div>
+
+        <div class="search-select">
+          <select aria-label="Search style">
+            <option>Search</option>
+            <option>Food Style 1</option>
+            <option>Food Style 2</option>
+            <option>Food Style 3</option>
+            <option>Food Style 4</option>
+            <option>Food Style 5</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
+    <section class="about-shell">
+      <section class="hero-grid">
+        <div class="hero-image">
+          <img src="assets/imgs/about-hero.png" alt="A bold plated dish representing Art For Your Mouth" />
+        </div>
+
+        <div class="hero-copy">
+          <p class="eyebrow">About Art For Your Mouth</p>
+          <h1>Where food, design, and flavor all show up to make a little trouble.</h1>
+          <p class="lead">
+            Art For Your Mouth is built for people who think food should do more than just fill a plate.
+            It should hit visually, make sense structurally, and taste like somebody actually cared.
+          </p>
+          <p class="lead">
+            This is a recipe-driven project with a creative backbone. Part food archive, part flavor lab,
+            part visual experience. Clean recipes. Big ideas. No filler.
+          </p>
+
+          <div class="meta-grid">
+            <div class="meta-card">
+              <span>Built For</span>
+              <strong>Flavor chasers</strong>
+            </div>
+            <div class="meta-card">
+              <span>Focus</span>
+              <strong>Recipes + food style</strong>
+            </div>
+            <div class="meta-card">
+              <span>Approach</span>
+              <strong>Search first</strong>
+            </div>
+            <div class="meta-card">
+              <span>Energy</span>
+              <strong>Creative, sharp, useful</strong>
+            </div>
+          </div>
+
+          <div class="tag-row">
+            <span class="tag">Recipes</span>
+            <span class="tag">Flavor</span>
+            <span class="tag">Food Culture</span>
+            <span class="tag">Creative Cooking</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <aside class="panel">
+          <h2>What This Is</h2>
+          <p>
+            Art For Your Mouth is a growing collection of recipes, concepts, and food ideas built with
+            structure and personality. It is meant to feel useful without being sterile and creative without
+            disappearing up its own ass.
+          </p>
+          <p>
+            Some dishes are simple. Some swing wider. The point is the same every time: make something worth eating.
+          </p>
+
+          <div class="quote-block">
+            <p>
+              If it does not taste good, look good, and make sense, it does not belong here.
+            </p>
+          </div>
+        </aside>
+
+        <section class="panel">
+          <h2>What You’ll Find</h2>
+          <ul class="bullet-list">
+            <li>Recipes that are clear enough to follow and strong enough to keep</li>
+            <li>Flavor combinations that go beyond bland weeknight autopilot</li>
+            <li>Food ideas shaped by design, story, texture, and balance</li>
+            <li>A system that can scale into a deep searchable recipe library</li>
+            <li>A site that treats food like a creative medium, not just content filler</li>
+          </ul>
+        </section>
+      </section>
+
+      <section class="content-grid" style="margin-top: 24px;">
+        <aside class="panel">
+          <h2>Why It Exists</h2>
+          <p>
+            Too many recipe sites bury the actual cooking under a mountain of noise. Others feel like they were
+            generated by a machine that has never tasted anything in its life.
+          </p>
+          <p>
+            Art For Your Mouth is the fix for that. The goal is simple: build a space where the recipe matters,
+            the design matters, and the experience does not feel disposable.
+          </p>
+        </aside>
+
+        <section class="panel">
+          <h2>The Point of View</h2>
+          <p>
+            This project comes from a builder’s mindset. Structure matters. Presentation matters. Function matters.
+            Good food should have the same kind of attention behind it as good design.
+          </p>
+          <p>
+            The long game is a scalable platform with hundreds, then thousands, of recipes organized by flavor,
+            style, ingredients, and mood, without turning into a cluttered mess.
+          </p>
+        </section>
+      </section>
+
+      <p class="footer-note">
+        Art For Your Mouth. Flavor with a point of view.
+      </p>
+    </section>
+  </main>
+</body>
+</html>
