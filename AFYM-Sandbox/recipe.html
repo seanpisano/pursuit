@@ -306,6 +306,76 @@
         grid-template-columns: 1fr 1fr;
       }
     }
+
+    .search-row {
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      gap: 14px;
+      align-items: center;
+      margin-top: 18px;
+    }
+
+    .search-field {
+      position: relative;
+    }
+
+    .search-field input {
+      width: 100%;
+      height: 60px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      padding: 0 20px;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.25s ease;
+    }
+
+    .search-field input::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+
+    .search-field input:focus,
+    .search-select select:focus {
+      border-color: rgba(244,90,24,0.8);
+      box-shadow: 0 0 0 4px rgba(244,90,24,0.14);
+    }
+
+    .search-select select {
+      width: 100%;
+      height: 60px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 16 16"><path d="M8 12l-6-6h12z"/></svg>') no-repeat right 16px center;
+      background-size: 16px;
+      color: var(--text);
+      padding: 0 40px 0 16px;
+      font-size: 1rem;
+      outline: none;
+      cursor: pointer;
+      transition: 0.25s ease;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+
+    .search-select option {
+      color: #000;
+    }
+
+    @media (max-width: 700px) {
+      .search-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .search-field input,
+      .search-select select {
+        height: 56px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -320,6 +390,23 @@
         <a href="#">Pairings</a>
         <a href="#">About</a>
       </nav>
+
+      <div class="search-row">
+        <div class="search-field">
+          <input type="text" placeholder="Search for recipes, flavors, ingredients, or inspiration" />
+        </div>
+
+        <div class="search-select">
+          <select aria-label="Search style">
+            <option>Search</option>
+            <option>Food Style 1</option>
+            <option>Food Style 2</option>
+            <option>Food Style 3</option>
+            <option>Food Style 4</option>
+            <option>Food Style 5</option>
+          </select>
+        </div>
+      </div>
     </header>
 
     <section class="recipe-shell" id="recipePage">
