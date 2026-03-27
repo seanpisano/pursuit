@@ -1,0 +1,68 @@
+{
+  "id": "buttermilk-brine",
+  "title": "Buttermilk Brine",
+  "category": "Basics",
+  "cuisine": "Southern",
+  "description": "Tangy, spiced buttermilk brine that tenderizes and seasons meat from the inside out. This is the move if you want juicy, flavorful chicken every time.",
+  "image": "assets/imgs/buttermilk-brine.png",
+  "prepTime": "8 mins",
+  "cookTime": "0 mins",
+  "totalTime": "4-24 hrs",
+  "prepTimeISO": "PT8M",
+  "cookTimeISO": "PT0M",
+  "totalTimeISO": "PT4H",
+  "servings": "1 quart",
+  "difficulty": "Easy",
+  "flavorProfile": "Tangy, smoky, savory",
+
+  "searchTerms": [
+    "buttermilk brine",
+    "chicken brine",
+    "fried chicken marinade",
+    "buttermilk marinade",
+    "southern brine",
+    "spicy brine",
+    "paprika brine",
+    "how to brine chicken",
+    "juicy chicken marinade",
+    "flavorful brine"
+  ],
+
+  "tags": [
+    "Brine",
+    "Marinade",
+    "Chicken",
+    "Prep",
+    "Southern",
+    "Flavor Boost"
+  ],
+
+  "ingredients": [
+    "1 quart buttermilk",
+    "4 tsp kosher salt",
+    "1 tsp ground black pepper",
+    "2 tbsp smoked paprika",
+    "2 tbsp Tabasco",
+    "2 tsp celery seeds"
+  ],
+
+  "instructions": [
+    "Combine buttermilk, kosher salt, black pepper, smoked paprika, Tabasco, and celery seeds in a large container.",
+    "Whisk until fully combined.",
+    "Add your protein (typically chicken) and make sure it is fully submerged.",
+    "Cover and refrigerate for at least 4 hours, up to 24 hours for deeper flavor.",
+    "Remove from brine and let excess drip off before cooking."
+  ],
+
+  "notes": [
+    "Do not rinse after brining, just let the excess drip off.",
+    "Works best with chicken pieces, especially for frying or roasting.",
+    "You can add garlic, hot sauce, or herbs to customize the flavor."
+  ],
+
+  "whyThisHits": "This is the cheat code for juicy chicken. The buttermilk breaks things down just enough while the seasoning builds flavor all the way through.",
+
+  "pairing": "Perfect prep for fried chicken, grilled chicken, or roasted pieces. Pair the final dish with coleslaw, biscuits, or something crisp to balance it out.",
+
+  "footerLine": "Art for Your Mouth. Because boring food is a waste of time."
+}

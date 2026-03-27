@@ -1,0 +1,75 @@
+{
+  "id": "bourbon-brown-sugar-bbq-sauce",
+  "title": "Bourbon and Brown Sugar Barbecue Sauce",
+  "category": "Sauces",
+  "cuisine": "American",
+  "description": "Sweet, smoky, and just a little dangerous. The bourbon cuts through the sugar while the molasses brings depth. This is not your average squeeze bottle sauce.",
+  "image": "assets/imgs/bourbon-brown-sugar-bbq-sauce.png",
+  "prepTime": "5 mins",
+  "cookTime": "10 mins",
+  "totalTime": "15 mins",
+  "prepTimeISO": "PT5M",
+  "cookTimeISO": "PT10M",
+  "totalTimeISO": "PT15M",
+  "servings": "2 cups",
+  "difficulty": "Easy",
+  "flavorProfile": "Sweet, smoky, tangy, bold",
+
+  "searchTerms": [
+    "bourbon bbq sauce",
+    "brown sugar barbecue sauce",
+    "homemade bbq sauce",
+    "smoky bbq sauce",
+    "sweet bbq sauce",
+    "grilling sauce",
+    "barbecue glaze",
+    "southern bbq sauce",
+    "bbq sauce from scratch",
+    "bourbon glaze"
+  ],
+
+  "tags": [
+    "Sauce",
+    "BBQ",
+    "Grilling",
+    "Condiment",
+    "Sweet",
+    "Smoky"
+  ],
+
+  "ingredients": [
+    "1/2 cup bourbon",
+    "3 tbsp brown sugar",
+    "3 tbsp mild molasses",
+    "3 tbsp apple cider vinegar",
+    "2 tbsp Worcestershire sauce",
+    "1 tbsp soy sauce",
+    "1 tbsp Dijon mustard",
+    "1 1/2 tsp liquid smoke",
+    "1 tsp onion powder",
+    "1 tsp garlic powder",
+    "1/2 tsp dried crushed red pepper",
+    "1/2 tsp freshly ground black pepper"
+  ],
+
+  "instructions": [
+    "Combine all ingredients in a saucepan over medium heat.",
+    "Bring to a boil, stirring occasionally.",
+    "Reduce heat and simmer, stirring often, until the sauce thickens and reduces to about 2 cups, about 10 minutes.",
+    "Remove from heat and let cool slightly before using.",
+    "Store covered in the refrigerator for up to 2 weeks.",
+    "Bring to room temperature before serving."
+  ],
+
+  "notes": [
+    "Simmer longer if you want a thicker, stickier sauce.",
+    "Brush on during the last few minutes of grilling to avoid burning the sugars.",
+    "Works great as both a glaze and a dipping sauce."
+  ],
+
+  "whyThisHits": "It balances sweet, smoke, and heat without leaning too hard in any direction. The bourbon adds depth instead of just being a gimmick.",
+
+  "pairing": "Perfect for ribs, chicken, burgers, or anything coming off a grill. Also solid as a dipping sauce for fries or roasted potatoes.",
+
+  "footerLine": "Art for Your Mouth. Because boring food is a waste of time."
+}

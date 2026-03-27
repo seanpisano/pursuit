@@ -1,0 +1,79 @@
+{
+  "id": "chicken-stock-broth",
+  "title": "Chicken Stock / Broth",
+  "category": "Basics",
+  "cuisine": "Classic",
+  "description": "Deep, slow-simmered chicken stock that builds real flavor. This is the backbone of soups, sauces, and anything that actually tastes like it was made with intention.",
+  "image": "assets/imgs/chicken-stock-broth.png",
+  "prepTime": "10 mins",
+  "cookTime": "3 hrs 15 mins",
+  "totalTime": "3 hrs 25 mins",
+  "prepTimeISO": "PT10M",
+  "cookTimeISO": "PT3H15M",
+  "totalTimeISO": "PT3H25M",
+  "servings": "6-8 cups",
+  "difficulty": "Easy",
+  "flavorProfile": "Savory, rich, aromatic",
+
+  "searchTerms": [
+    "chicken stock",
+    "chicken broth",
+    "homemade stock",
+    "bone broth chicken",
+    "soup base",
+    "cooking basics",
+    "how to make stock",
+    "slow simmer broth",
+    "kitchen fundamentals",
+    "classic broth recipe"
+  ],
+
+  "tags": [
+    "Stock",
+    "Broth",
+    "Soup Base",
+    "Meal Prep",
+    "Classic",
+    "Comfort Food"
+  ],
+
+  "ingredients": [
+    "3 lbs bony chicken pieces (legs, wings, necks or back bones)",
+    "3 celery ribs with leaves, cut into chunks",
+    "3 medium carrots, cut into chunks",
+    "1 medium onion, cut into chunks",
+    "1 tbsp dried rosemary or 2 sprigs fresh rosemary",
+    "1 tbsp dried thyme or 2 sprigs fresh thyme",
+    "3 cloves garlic, crushed whole",
+    "3 quarts (12 cups) cold water"
+  ],
+
+  "optionalIngredients": [
+    "1/2 tbsp coriander",
+    "1 tbsp marjoram",
+    "1/2 tbsp lime or lemon zest"
+  ],
+
+  "instructions": [
+    "Place all ingredients in a large pot and add the cold water.",
+    "Slowly bring to a boil, then reduce heat to a gentle simmer.",
+    "Simmer uncovered for 3 hours, skimming foam as needed.",
+    "Remove chicken pieces and let cool until safe to handle.",
+    "Pull meat from the bones and set aside for another use. Discard bones.",
+    "Strain the broth, discarding vegetables and seasonings.",
+    "Refrigerate for 8 hours or overnight.",
+    "Skim fat from the surface before using."
+  ],
+
+  "notes": [
+    "Use leftover meat for soups, salads, or sandwiches.",
+    "Roasting the bones first will give a deeper, richer flavor.",
+    "Freeze in portions so you always have stock ready to go."
+  ],
+
+  "whyThisHits": "This is the foundation move. Once you start making your own stock, everything else levels up. Soups taste deeper, sauces hit harder, and nothing feels store-bought anymore.",
+
+  "pairing": "Use as a base for soups, risottos, sauces, or just sip it hot with a little salt if you are keeping it simple.",
+
+  "footerLine": "Art for Your Mouth. Because boring food is a waste of time."
+}

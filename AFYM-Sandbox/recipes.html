@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Art For Your Mouth | Recipes</title>
+  <style>
+    :root {
+      --bg: #000000;
+      --green: #2f7d1f;
+      --green-light: #5baa3c;
+      --orange: #f45a18;
+      --orange-light: #ff8a2a;
+      --cream: #f4e4c6;
+      --text: #f7f7f7;
+      --muted: rgba(255,255,255,0.72);
+      --border: rgba(255,255,255,0.14);
+      --shadow: 0 20px 60px rgba(0,0,0,0.45);
+      --panel: rgba(255,255,255,0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(47,125,31,0.14), transparent 30%),
+        radial-gradient(circle at bottom, rgba(244,90,24,0.18), transparent 35%),
+        var(--bg);
+      color: var(--text);
+      padding: 32px 20px 60px;
+    }
+
+    .page-wrap {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .site-header {
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .site-header img {
+      width: min(100%, 420px);
+      height: auto;
+      display: block;
+      margin: 0 auto 18px;
+      filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.45));
+    }
+
+    .top-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .top-nav a {
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid rgba(91,170,60,0.35);
+      background: rgba(47,125,31,0.12);
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: 0.25s ease;
+    }
+
+    .top-nav a:hover,
+    .top-nav a:focus {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .top-nav a.active {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
+    }
+
+    .home-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+
+    .search-row {
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      gap: 14px;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .search-field input,
+    .search-select select {
+      width: 100%;
+      height: 60px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      padding: 0 20px;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.25s ease;
+    }
+
+    .search-field input::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+
+    .search-field input:focus,
+    .search-select select:focus {
+      border-color: rgba(244,90,24,0.8);
+      box-shadow: 0 0 0 4px rgba(244,90,24,0.14);
+    }
+
+    .search-select select {
+      background: rgba(255,255,255,0.06) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 16 16"><path d="M8 12l-6-6h12z"/></svg>') no-repeat right 16px center;
+      background-size: 16px;
+      cursor: pointer;
+      appearance: none;
+    }
+
+    .main-shell {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      min-height: 320px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.24);
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .card:hover,
+    .card:focus {
+      transform: translateY(-3px);
+      border-color: var(--orange);
+    }
+
+    .card img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-body {
+      padding: 14px 12px 16px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--cream);
+      line-height: 1.2;
+    }
+
+    .card-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .card-meta span {
+      background: rgba(255,255,255,0.08);
+      padding: 6px 8px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.14);
+      text-align: center;
+    }
+
+    .empty-state {
+      margin: auto;
+      text-align: center;
+      font-size: 1rem;
+      color: var(--muted);
+      padding: 60px 20px;
+    }
+
+    @media (max-width: 700px) {
+      .search-row { grid-template-columns: 1fr; }
+      .search-row { margin-top: 14px; }
+    }
+
+    @media (max-width: 560px) {
+      body { padding: 20px 14px 40px; }
+      .main-shell { padding: 16px; }
+      .search-field input, .search-select select { height: 56px; }
+      .card img { height: 150px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-wrap">
+    <header class="site-header">
+      <a href="index.html">
+        <img src="assets/imgs/logo.png" alt="Art For Your Mouth logo" />
+      </a>
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="index.html" title="Home" class="home-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="9,22 9,12 15,12 15,22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="about.html">About</a>
+        <a href="prep.html">Prep</a>
+        <a href="spices.html">Spices</a>
+        <a href="meats.html">Meats</a>
+        <a href="vegtables.html">Vegtables</a>
+        <a href="recipes.html" class="active">Recipes</a>
+      </nav>
+
+      <div class="search-row">
+        <div class="search-field">
+          <input id="searchInput" type="text" placeholder="Search recipes by name, ingredient, cuisine..." />
+        </div>
+        <div class="search-select">
+          <select id="sortSelect" aria-label="Sort recipes">
+            <option value="">Sort by</option>
+            <option value="title">Title</option>
+            <option value="prepTime">Prep Time</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
+    <section class="main-shell">
+      <div id="cards" class="cards-grid"></div>
+      <div id="empty" class="empty-state" style="display:none;">No recipes match your search query.</div>
+    </section>
+  </main>
+
+  <script>
+    const recipeList = [
+      'chicken-stock-broth',
+      'shepherds-pie',
+      'buttermilk-brine',
+      'country-gravy-sausage',
+      'bourbon-brown-sugar-bbq-sauce',
+      'buttermilk-biscuits'
+    ];
+
+    const cards = document.getElementById('cards');
+    const empty = document.getElementById('empty');
+    const searchInput = document.getElementById('searchInput');
+    const sortSelect = document.getElementById('sortSelect');
+
+    let recipes = [];
+
+    async function loadRecipes() {
+      try {
+        const loads = recipeList.map(id => fetch(`recipes/${id}.json`).then(r => r.json()));
+        recipes = await Promise.all(loads);
+        renderCards(recipes);
+      } catch (error) {
+        cards.innerHTML = `<div class="empty-state">Unable to load recipes; check your recipes JSON path.</div>`;
+        console.error(error);
+      }
+    }
+
+    function renderCards(items) {
+      if (items.length === 0) {
+        cards.innerHTML = '';
+        empty.style.display = 'block';
+        return;
+      }
+
+      empty.style.display = 'none';
+      cards.innerHTML = items.map(recipe => `
+        <article class="card" tabindex="0" role="button" aria-label="Open ${recipe.title}" data-id="${recipe.id}">
+          <img src="${recipe.image}" alt="${recipe.title}" />
+          <div class="card-body">
+            <div class="card-title">${recipe.title}</div>
+            <div class="card-meta">
+              <span>Prep: ${recipe.prepTime}</span>
+              <span>Cook: ${recipe.cookTime}</span>
+              <span>Total: ${recipe.totalTime}</span>
+              <span>Serves: ${recipe.servings}</span>
+            </div>
+          </div>
+        </article>
+      `).join('');
+
+      cards.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click', () => {
+          const id = card.dataset.id;
+          window.location.href = `recipe.html?id=${encodeURIComponent(id)}`;
+        });
+        card.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            card.click();
+          }
+        });
+      });
+    }
+
+    function normalizeText(text) {
+      return String(text).toLowerCase();
+    }
+
+    function filterAndSort() {
+      const query = normalizeText(searchInput.value.trim());
+      let filtered = recipes.filter(recipe => {
+        if (!query) return true;
+
+        const haystack = [recipe.title, recipe.category, recipe.cuisine, ...(recipe.searchTerms || []), ...(recipe.tags || []), (recipe.description || '')].join(' ').toLowerCase();
+        return haystack.includes(query);
+      });
+
+      const sort = sortSelect.value;
+      if (sort === 'title') {
+        filtered.sort((a, b) => a.title.localeCompare(b.title));
+      } else if (sort === 'prepTime') {
+        filtered.sort((a, b) => parseInt(a.prepTime) - parseInt(b.prepTime));
+      }
+
+      renderCards(filtered);
+    }
+
+    searchInput.addEventListener('input', filterAndSort);
+    sortSelect.addEventListener('change', filterAndSort);
+
+    loadRecipes();
+  </script>
+</body>
+</html>

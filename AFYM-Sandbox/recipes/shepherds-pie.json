@@ -1,0 +1,89 @@
+{
+  "id": "shepherds-pie",
+  "title": "Shepherd’s Pie",
+  "category": "Comfort Food",
+  "cuisine": "Classic",
+  "description": "Rich beef, vegetables, and gravy layered under creamy mashed potatoes and baked until golden. This is straight-up comfort that actually earns it.",
+  "image": "assets/imgs/shepherds-pie.png",
+  "prepTime": "20 mins",
+  "cookTime": "45 mins",
+  "totalTime": "1 hr 5 mins",
+  "prepTimeISO": "PT20M",
+  "cookTimeISO": "PT45M",
+  "totalTimeISO": "PT1H5M",
+  "servings": "6-8 servings",
+  "difficulty": "Medium",
+  "flavorProfile": "Savory, rich, hearty",
+
+  "searchTerms": [
+    "shepherds pie",
+    "cottage pie",
+    "beef pie recipe",
+    "mashed potato casserole",
+    "comfort food dinner",
+    "classic british pie",
+    "ground beef casserole",
+    "hearty baked dish",
+    "winter comfort meal",
+    "family dinner recipe"
+  ],
+
+  "tags": [
+    "Beef",
+    "Comfort Food",
+    "Baked",
+    "Dinner",
+    "Classic",
+    "Hearty"
+  ],
+
+  "ingredients": [
+    "2 lb russet potatoes, peeled and sliced 1/2 inch thick",
+    "Kosher salt",
+    "2/3 cup half and half",
+    "4 tbsp unsalted butter",
+    "2 tbsp fresh parsley, chopped and divided",
+    "Freshly ground black pepper",
+    "1 tbsp canola oil",
+    "2 lb lean ground beef",
+    "1 medium yellow onion, chopped",
+    "2 medium carrots, peeled and chopped",
+    "3 cloves garlic, chopped",
+    "2 tsp fresh rosemary, chopped",
+    "2 tsp fresh thyme, chopped",
+    "3 tbsp tomato paste",
+    "1/2 cup dry red wine",
+    "1 cup low sodium beef broth",
+    "3 tbsp Worcestershire sauce",
+    "3 tbsp all purpose flour",
+    "1 cup frozen corn",
+    "1 cup frozen peas",
+    "3 tbsp grated Parmesan",
+    "Cooking spray"
+  ],
+
+  "instructions": [
+    "Preheat oven to 400°F. Place potatoes in a pot, cover with water, season with salt, and bring to a boil. Cook until fork-tender, about 12 to 15 minutes. Drain and set aside.",
+    "In the same pot over medium low heat, warm half and half and butter until melted. Return potatoes and mash until smooth. Stir in half the parsley, season with salt and black pepper, and set aside.",
+    "In a large skillet over medium high heat, heat oil. Add ground beef, season with salt and black pepper, and cook until browned, breaking it apart, about 6 to 8 minutes. Transfer beef to a plate and reserve about 2 tbsp of drippings.",
+    "In the same skillet over medium heat, cook onion and carrots until softened, about 5 to 6 minutes. Add garlic, rosemary, and thyme and cook until fragrant, about 2 minutes.",
+    "Return beef and juices to the skillet. Stir in tomato paste and cook until darkened, about 3 to 4 minutes. Add wine and reduce for 2 to 3 minutes.",
+    "Stir in beef broth and Worcestershire sauce and bring to a simmer. Sprinkle in flour and cook until thickened, about 5 minutes. Stir in corn and peas.",
+    "Transfer mixture to a 13 x 9-inch baking dish. Spread mashed potatoes evenly over the top. Smooth with a spatula if needed.",
+    "Sprinkle with Parmesan and a pinch of black pepper.",
+    "Bake for about 25 minutes until bubbling. Switch to broil and cook 1 to 2 minutes until top is lightly browned.",
+    "Remove, sprinkle with remaining parsley, and let cool for 10 minutes before serving."
+  ],
+
+  "notes": [
+    "For a richer flavor, use a mix of beef and lamb.",
+    "Make ahead and refrigerate before baking for an easy next-day dinner.",
+    "Add a splash more broth if the filling gets too thick while cooking."
+  ],
+
+  "whyThisHits": "It is layered comfort done right. Creamy, rich, and packed with flavor in every bite. This is the kind of dish that feels like it has history behind it.",
+
+  "pairing": "Serve with a bold red wine, a dark beer, or just a simple green salad to cut through the richness.",
+
+  "footerLine": "Art for Your Mouth. Because boring food is a waste of time."
+}

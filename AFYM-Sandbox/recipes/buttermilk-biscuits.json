@@ -1,0 +1,98 @@
+{
+  "id": "buttermilk-biscuits",
+  "title": "Buttermilk Biscuits",
+  "category": "Baking",
+  "cuisine": "Southern",
+  "description": "Flaky, buttery, golden biscuits with just the right rise. Soft inside, crisp outside, and built for everything from breakfast to full-on comfort meals.",
+  "image": "assets/imgs/buttermilk-biscuits.png",
+  "prepTime": "20 mins",
+  "cookTime": "15 mins",
+  "totalTime": "35 mins",
+  "prepTimeISO": "PT20M",
+  "cookTimeISO": "PT15M",
+  "totalTimeISO": "PT35M",
+  "servings": "12 biscuits",
+  "difficulty": "Medium",
+  "flavorProfile": "Buttery, light, flaky",
+
+  "searchTerms": [
+    "buttermilk biscuits",
+    "southern biscuits",
+    "flaky biscuits",
+    "homemade biscuits",
+    "easy biscuit recipe",
+    "biscuit dough",
+    "buttery biscuits",
+    "breakfast biscuits",
+    "classic biscuits",
+    "biscuit from scratch"
+  ],
+
+  "tags": [
+    "Baking",
+    "Biscuits",
+    "Southern",
+    "Breakfast",
+    "Comfort Food"
+  ],
+
+  "ingredients": [
+    "2 cups all-purpose flour",
+    "2 tsp baking powder",
+    "1 tsp salt",
+    "1/4 tsp baking soda",
+    "7 tbsp unsalted butter, chilled and sliced",
+    "3/4 cup cold buttermilk",
+    "2 tbsp buttermilk for brushing"
+  ],
+
+  "instructions": [
+    "Preheat oven to 425°F. Line a baking sheet with parchment paper.",
+    "Whisk together flour, baking powder, salt, and baking soda.",
+    "Cut butter into the flour until the mixture resembles coarse crumbs.",
+    "Make a well and add buttermilk. Stir until just combined.",
+    "Turn dough onto a floured surface and form into a rectangle.",
+    "Fold into thirds, rotate, and repeat folding two more times.",
+    "Roll or pat dough to about 1/2 inch thick.",
+    "Cut into biscuits and place on baking sheet.",
+    "Press a slight indent into each biscuit and brush with buttermilk.",
+    "Bake for about 15 minutes until golden brown."
+  ],
+
+  "notes": [
+    "Keep everything cold for the best texture.",
+    "Do not overwork the dough or biscuits will be tough.",
+    "Place biscuits close together for softer sides, spaced apart for crisp edges."
+  ],
+
+  "variations": [
+    {
+      "title": "Buttermilk Biscuits V2",
+      "prepTime": "12-15 mins",
+      "cookTime": "10-12 mins",
+      "totalTime": "22-27 mins",
+      "servings": "10 biscuits",
+      "instructions": [
+        "Preheat oven to 450°F.",
+        "Combine dry ingredients in a bowl or food processor.",
+        "Cut or pulse butter into flour until coarse meal forms.",
+        "Add buttermilk and mix just until combined. Dough should be slightly wet.",
+        "Turn onto floured surface and gently pat to 1/2 inch thick.",
+        "Fold dough about 5 times and press to about 1 inch thick.",
+        "Cut into rounds and place on baking sheet.",
+        "Bake 10 to 12 minutes until golden brown."
+      ],
+      "notes": [
+        "Handle dough as little as possible to keep biscuits tender.",
+        "Pat by hand, do not use a rolling pin.",
+        "Freeze unbaked biscuits and bake straight from frozen at 450°F for about 20 minutes."
+      ]
+    }
+  ],
+
+  "whyThisHits": "This is technique-driven cooking. When you get it right, you get layers, lift, and that perfect bite that makes everything else on the plate better.",
+
+  "pairing": "Serve with butter and jam, sausage gravy, fried chicken, or just eat one straight off the tray while nobody is looking.",
+
+  "footerLine": "Art for Your Mouth. Because boring food is a waste of time."
+}
