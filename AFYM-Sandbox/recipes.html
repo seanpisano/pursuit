@@ -96,43 +96,54 @@
       padding: 8px;
     }
 
-    .search-row {
-      display: grid;
-      grid-template-columns: 1fr 180px;
-      gap: 14px;
+    .sort-section {
+      display: flex;
       align-items: center;
+      gap: 16px;
       margin-top: 20px;
     }
 
-    .search-field input,
-    .search-select select {
-      width: 100%;
-      height: 60px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.06);
+    .sort-label {
+      font-size: 0.95rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .sort-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .sort-buttons button {
+      text-decoration: none;
       color: var(--text);
-      padding: 0 20px;
-      font-size: 1rem;
-      outline: none;
+      border: 1px solid rgba(91,170,60,0.35);
+      background: rgba(47,125,31,0.12);
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
       transition: 0.25s ease;
-    }
-
-    .search-field input::placeholder {
-      color: rgba(255,255,255,0.5);
-    }
-
-    .search-field input:focus,
-    .search-select select:focus {
-      border-color: rgba(244,90,24,0.8);
-      box-shadow: 0 0 0 4px rgba(244,90,24,0.14);
-    }
-
-    .search-select select {
-      background: rgba(255,255,255,0.06) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 16 16"><path d="M8 12l-6-6h12z"/></svg>') no-repeat right 16px center;
-      background-size: 16px;
       cursor: pointer;
-      appearance: none;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .sort-buttons button:hover,
+    .sort-buttons button:focus {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .sort-buttons button.active {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #fff;
     }
 
     .main-shell {
@@ -206,23 +217,10 @@
       text-align: center;
     }
 
-    .empty-state {
-      margin: auto;
-      text-align: center;
-      font-size: 1rem;
-      color: var(--muted);
-      padding: 60px 20px;
-    }
-
-    @media (max-width: 700px) {
-      .search-row { grid-template-columns: 1fr; }
-      .search-row { margin-top: 14px; }
-    }
-
     @media (max-width: 560px) {
       body { padding: 20px 14px 40px; }
       .main-shell { padding: 16px; }
-      .search-field input, .search-select select { height: 56px; }
+      .sort-section { flex-direction: column; align-items: flex-start; }
       .card img { height: 150px; }
     }
   </style>
@@ -248,23 +246,18 @@
         <a href="recipes.html" class="active">Recipes</a>
       </nav>
 
-      <div class="search-row">
-        <div class="search-field">
-          <input id="searchInput" type="text" placeholder="Search recipes by name, ingredient, cuisine..." />
-        </div>
-        <div class="search-select">
-          <select id="sortSelect" aria-label="Sort recipes">
-            <option value="">Sort by</option>
-            <option value="title">Title</option>
-            <option value="prepTime">Prep Time</option>
-          </select>
+      <div class="sort-section">
+        <div class="sort-label">Sort By</div>
+        <div class="sort-buttons">
+          <button id="sortDefault" class="sort-btn active" data-sort="">Default</button>
+          <button id="sortTitle" class="sort-btn" data-sort="title">Title</button>
+          <button id="sortPrepTime" class="sort-btn" data-sort="prepTime">Prep Time</button>
         </div>
       </div>
     </header>
 
     <section class="main-shell">
       <div id="cards" class="cards-grid"></div>
-      <div id="empty" class="empty-state" style="display:none;">No recipes match your search query.</div>
     </section>
   </main>
 
@@ -279,11 +272,10 @@
     ];
 
     const cards = document.getElementById('cards');
-    const empty = document.getElementById('empty');
-    const searchInput = document.getElementById('searchInput');
-    const sortSelect = document.getElementById('sortSelect');
+    const sortButtons = document.querySelectorAll('.sort-btn');
 
     let recipes = [];
+    let currentSort = '';
 
     async function loadRecipes() {
       try {
@@ -297,13 +289,6 @@
     }
 
     function renderCards(items) {
-      if (items.length === 0) {
-        cards.innerHTML = '';
-        empty.style.display = 'block';
-        return;
-      }
-
-      empty.style.display = 'none';
       cards.innerHTML = items.map(recipe => `
         <article class="card" tabindex="0" role="button" aria-label="Open ${recipe.title}" data-id="${recipe.id}">
           <img src="${recipe.image}" alt="${recipe.title}" />
@@ -333,31 +318,26 @@
       });
     }
 
-    function normalizeText(text) {
-      return String(text).toLowerCase();
-    }
+    function sortRecipes(sortValue) {
+      currentSort = sortValue;
+      let sorted = [...recipes];
 
-    function filterAndSort() {
-      const query = normalizeText(searchInput.value.trim());
-      let filtered = recipes.filter(recipe => {
-        if (!query) return true;
-
-        const haystack = [recipe.title, recipe.category, recipe.cuisine, ...(recipe.searchTerms || []), ...(recipe.tags || []), (recipe.description || '')].join(' ').toLowerCase();
-        return haystack.includes(query);
-      });
-
-      const sort = sortSelect.value;
-      if (sort === 'title') {
-        filtered.sort((a, b) => a.title.localeCompare(b.title));
-      } else if (sort === 'prepTime') {
-        filtered.sort((a, b) => parseInt(a.prepTime) - parseInt(b.prepTime));
+      if (sortValue === 'title') {
+        sorted.sort((a, b) => a.title.localeCompare(b.title));
+      } else if (sortValue === 'prepTime') {
+        sorted.sort((a, b) => parseInt(a.prepTime) - parseInt(b.prepTime));
       }
 
-      renderCards(filtered);
+      renderCards(sorted);
     }
 
-    searchInput.addEventListener('input', filterAndSort);
-    sortSelect.addEventListener('change', filterAndSort);
+    sortButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        sortButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        sortRecipes(button.dataset.sort);
+      });
+    });
 
     loadRecipes();
   </script>
