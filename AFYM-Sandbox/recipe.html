@@ -434,288 +434,189 @@
     </section>
   </main>
 
-  <script>
-    async function loadRecipe() {
-      try {
-        const response = await fetch('recipes/spicy-honey-noodles.json');
-        const recipe = await response.json();
+<script>
+  function getRecipeIdFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('id');
+  }
 
-        document.title = `Art For Your Mouth | ${recipe.title}`;
+  function getRecipePath(recipeId) {
+    const validIds = [
+      'spicy-honey-noodles',
+      'chicken-stock-broth',
+      'shepherds-pie',
+      'buttermilk-brine',
+      'country-gravy-sausage',
+      'bourbon-brown-sugar-bbq-sauce',
+      'buttermilk-biscuits'
+    ];
 
-        const tagsHTML = recipe.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
-        const ingredientsHTML = recipe.ingredients.map(item => `<li>${item}</li>`).join('');
-        const stepsHTML = recipe.instructions.map(step => `
-          <li>
-            <div class="step-num"></div>
-            <div class="step-copy">${step}</div>
-          </li>
-        `).join('');
-        const notesHTML = recipe.notes.map(note => `<li>${note}</li>`).join('');
+    if (!recipeId || !validIds.includes(recipeId)) {
+      return 'recipes/spicy-honey-noodles.json';
+    }
 
-        document.getElementById('recipePage').innerHTML = `
-          <section class="hero-grid">
-            <div class="hero-image">
-              <img src="${recipe.image}" alt="${recipe.title}">
+    return `recipes/${recipeId}.json`;
+  }
+
+  function injectRecipeSchema(recipe) {
+    const oldSchema = document.getElementById("recipe-schema");
+    if (oldSchema) oldSchema.remove();
+
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "Recipe",
+      "name": recipe.title,
+      "description": recipe.description,
+      "image": recipe.image,
+      "recipeCategory": recipe.category,
+      "recipeCuisine": recipe.cuisine,
+      "keywords": recipe.tags ? recipe.tags.join(", ") : "",
+      "prepTime": recipe.prepTimeISO,
+      "cookTime": recipe.cookTimeISO,
+      "totalTime": recipe.totalTimeISO,
+      "recipeYield": recipe.servings,
+      "recipeIngredient": recipe.ingredients || [],
+      "recipeInstructions": (recipe.instructions || []).map(step => ({
+        "@type": "HowToStep",
+        "text": step
+      }))
+    };
+
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.id = "recipe-schema";
+    script.textContent = JSON.stringify(schema);
+    document.head.appendChild(script);
+  }
+
+  async function loadRecipe() {
+    const recipeId = getRecipeIdFromUrl();
+    const recipePath = getRecipePath(recipeId);
+
+    try {
+      const response = await fetch(recipePath);
+      if (!response.ok) {
+        throw new Error(`Could not load ${recipePath}`);
+      }
+
+      const recipe = await response.json();
+
+      document.title = `Art For Your Mouth | ${recipe.title}`;
+
+      const tagsHTML = (recipe.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('');
+      const ingredientsHTML = (recipe.ingredients || []).map(item => `<li>${item}</li>`).join('');
+      const stepsHTML = (recipe.instructions || []).map((step, index) => `
+        <li>
+          <div class="step-num">${index + 1}</div>
+          <div class="step-copy">${step}</div>
+        </li>
+      `).join('');
+      const notesHTML = (recipe.notes || []).map(note => `<li>${note}</li>`).join('');
+
+      document.getElementById('recipePage').innerHTML = `
+        <section class="hero-grid">
+          <div class="hero-image">
+            <img src="${recipe.image}" alt="${recipe.title}">
+          </div>
+
+          <div class="hero-copy">
+            <p class="eyebrow">${recipe.category || ''}</p>
+            <h1>${recipe.title || ''}</h1>
+            <p class="description">${recipe.description || ''}</p>
+
+            <div class="meta-grid">
+              <div class="meta-card">
+                <span>Prep Time</span>
+                <strong>${recipe.prepTime || ''}</strong>
+              </div>
+              <div class="meta-card">
+                <span>Cook Time</span>
+                <strong>${recipe.cookTime || ''}</strong>
+              </div>
+              <div class="meta-card">
+                <span>Total Time</span>
+                <strong>${recipe.totalTime || ''}</strong>
+              </div>
+              <div class="meta-card">
+                <span>Serves</span>
+                <strong>${recipe.servings || ''}</strong>
+              </div>
+              <div class="meta-card">
+                <span>Difficulty</span>
+                <strong>${recipe.difficulty || ''}</strong>
+              </div>
+              <div class="meta-card">
+                <span>Flavor</span>
+                <strong>${recipe.flavorProfile || ''}</strong>
+              </div>
             </div>
 
-            <div class="hero-copy">
-              <p class="eyebrow">${recipe.category}</p>
-              <h1>${recipe.title}</h1>
-              <p class="description">${recipe.description}</p>
-
-              <div class="meta-grid">
-                <div class="meta-card">
-                  <span>Prep Time</span>
-                  <strong>${recipe.prepTime}</strong>
-                </div>
-                <div class="meta-card">
-                  <span>Cook Time</span>
-                  <strong>${recipe.cookTime}</strong>
-                </div>
-                <div class="meta-card">
-                  <span>Total Time</span>
-                  <strong>${recipe.totalTime}</strong>
-                </div>
-                <div class="meta-card">
-                  <span>Serves</span>
-                  <strong>${recipe.servings}</strong>
-                </div>
-                <div class="meta-card">
-                  <span>Difficulty</span>
-                  <strong>${recipe.difficulty}</strong>
-                </div>
-                <div class="meta-card">
-                  <span>Flavor</span>
-                  <strong>${recipe.flavorProfile}</strong>
-                </div>
-              </div>
-
-              <div class="tag-row">
-                ${tagsHTML}
-              </div>
+            <div class="tag-row">
+              ${tagsHTML}
             </div>
-          </section>
+          </div>
+        </section>
 
-          <section class="content-grid">
-            <aside class="panel">
-              <h2>Ingredients</h2>
-              <ul class="ingredients-list">
-                ${ingredientsHTML}
+        <section class="content-grid">
+          <aside class="panel">
+            <h2>Ingredients</h2>
+            <ul class="ingredients-list">
+              ${ingredientsHTML}
+            </ul>
+
+            <div class="story-block">
+              <h2>Why This Hits</h2>
+              <p>${recipe.whyThisHits || ''}</p>
+            </div>
+
+            <div class="story-block">
+              <h2>Notes</h2>
+              <ul class="notes-list">
+                ${notesHTML}
               </ul>
-
-              <div class="story-block">
-                <h2>Why This Hits</h2>
-                <p>${recipe.whyThisHits}</p>
-              </div>
-
-              <div class="story-block">
-                <h2>Notes</h2>
-                <ul class="notes-list">
-                  ${notesHTML}
-                </ul>
-              </div>
-            </aside>
-
-            <section class="panel">
-              <h2>Instructions</h2>
-              <ol class="steps-list">
-                ${stepsHTML}
-              </ol>
-
-              <div class="story-block">
-                <h2>Pair It With</h2>
-                <p>${recipe.pairing}</p>
-              </div>
-            </section>
-          </section>
-
-          <p class="footer-note">${recipe.footerLine}</p>
-        `;
-
-        injectRecipeSchema(recipe);
-      } catch (error) {
-        document.getElementById('recipePage').innerHTML = `
-          <div class="panel">
-            <h2>Recipe could not load</h2>
-            <p>Please make sure your JSON file path is correct.</p>
-          </div>
-        `;
-        console.error(error);
-      }
-    }
-
-    function injectRecipeSchema(recipe) {
-      const schema = {
-        "@context": "https://schema.org",
-        "@type": "Recipe",
-        "name": recipe.title,
-        "description": recipe.description,
-        "image": recipe.image,
-        "recipeCategory": recipe.category,
-        "recipeCuisine": recipe.cuisine,
-        "keywords": recipe.tags.join(", "),
-        "prepTime": recipe.prepTimeISO,
-        "cookTime": recipe.cookTimeISO,
-        "totalTime": recipe.totalTimeISO,
-        "recipeYield": `${recipe.servings} servings`,
-        "recipeIngredient": recipe.ingredients,
-        "recipeInstructions": recipe.instructions.map(step => ({
-          "@type": "HowToStep",
-          "text": step
-        }))
-      };
-
-      const script = document.createElement("script");
-      script.type = "application/ld+json";
-      script.textContent = JSON.stringify(schema);
-      document.head.appendChild(script);
-    }
-
-    function getRecipeIdFromUrl() {
-      const params = new URLSearchParams(window.location.search);
-      return params.get('id');
-    }
-
-    function getRecipePath(recipeId) {
-      const validIds = [
-        'chicken-stock-broth',
-        'shepherds-pie',
-        'buttermilk-brine',
-        'country-gravy-sausage',
-        'bourbon-brown-sugar-bbq-sauce',
-        'buttermilk-biscuits'
-      ];
-
-      if (!recipeId || !validIds.includes(recipeId)) {
-        return null;
-      }
-
-      return `recipes/${recipeId}.json`;
-    }
-
-    async function loadRecipe() {
-      const recipeId = getRecipeIdFromUrl();
-      const recipePath = getRecipePath(recipeId) || 'recipes/spicy-honey-noodles.json';
-
-      if (!recipeId) {
-        document.getElementById('recipePage').innerHTML = `
-          <div class="panel">
-            <h2>No recipe selected</h2>
-            <p>Select a recipe from <a href="recipes.html">Recipes</a>.</p>
-          </div>
-        `;
-        return;
-      }
-
-      try {
-        const response = await fetch(recipePath);
-        if (!response.ok) throw new Error('Recipe not found');
-        const recipe = await response.json();
-
-        document.title = `Art For Your Mouth | ${recipe.title}`;
-
-        const tagsHTML = recipe.tags ? recipe.tags.map(tag => `<span class="tag">${tag}</span>`).join('') : '';
-        const ingredientsHTML = recipe.ingredients ? recipe.ingredients.map(item => `<li>${item}</li>`).join('') : '';
-        const stepsHTML = recipe.instructions ? recipe.instructions.map(step => `
-          <li>
-            <div class="step-num"></div>
-            <div class="step-copy">${step}</div>
-          </li>
-        `).join('') : '';
-        const notesHTML = recipe.notes ? recipe.notes.map(note => `<li>${note}</li>`).join('') : '';
-
-        document.getElementById('recipePage').innerHTML = `
-          <section class="hero-grid">
-            <div class="hero-image">
-              <img src="${recipe.image}" alt="${recipe.title}">
             </div>
+          </aside>
 
-            <div class="hero-copy">
-              <p class="eyebrow">${recipe.category}</p>
-              <h1>${recipe.title}</h1>
-              <p class="description">${recipe.description}</p>
+          <section class="panel">
+            <h2>Instructions</h2>
+            <ol class="steps-list">
+              ${stepsHTML}
+            </ol>
 
-              <div class="meta-grid">
-                <div class="meta-card">
-                  <span>Prep Time</span>
-                  <strong>${recipe.prepTime}</strong>
-                </div>
-                <div class="meta-card">
-                  <span>Cook Time</span>
-                  <strong>${recipe.cookTime}</strong>
-                </div>
-                <div class="meta-card">
-                  <span>Total Time</span>
-                  <strong>${recipe.totalTime}</strong>
-                </div>
-                <div class="meta-card">
-                  <span>Serves</span>
-                  <strong>${recipe.servings}</strong>
-                </div>
-                <div class="meta-card">
-                  <span>Difficulty</span>
-                  <strong>${recipe.difficulty}</strong>
-                </div>
-                <div class="meta-card">
-                  <span>Flavor</span>
-                  <strong>${recipe.flavorProfile}</strong>
-                </div>
-              </div>
-
-              <div class="tag-row">
-                ${tagsHTML}
-              </div>
+            <div class="story-block">
+              <h2>Pair It With</h2>
+              <p>${recipe.pairing || ''}</p>
             </div>
           </section>
+        </section>
 
-          <section class="content-grid">
-            <aside class="panel">
-              <h2>Ingredients</h2>
-              <ul class="ingredients-list">
-                ${ingredientsHTML}
-              </ul>
+        <p class="footer-note">${recipe.footerLine || ''}</p>
+      `;
 
-              <div class="story-block">
-                <h2>Why This Hits</h2>
-                <p>${recipe.whyThisHits || ''}</p>
-              </div>
-
-              <div class="story-block">
-                <h2>Notes</h2>
-                <ul class="notes-list">
-                  ${notesHTML}
-                </ul>
-              </div>
-            </aside>
-
-            <section class="panel">
-              <h2>Instructions</h2>
-              <ol class="steps-list">
-                ${stepsHTML}
-              </ol>
-
-              <div class="story-block">
-                <h2>Pair It With</h2>
-                <p>${recipe.pairing || ''}</p>
-              </div>
-            </section>
-          </section>
-
-          <p class="footer-note">${recipe.footerLine || ''}</p>
-        `;
-
-        injectRecipeSchema(recipe);
-      } catch (error) {
-        document.getElementById('recipePage').innerHTML = `
-          <div class="panel">
-            <h2>Recipe could not load</h2>
-            <p>Please make sure your JSON file path is correct.</p>
-          </div>
-        `;
-        console.error(error);
-      }
+      injectRecipeSchema(recipe);
+    } catch (error) {
+      document.getElementById('recipePage').innerHTML = `
+        <div class="panel">
+          <h2>Recipe could not load</h2>
+          <p>Please make sure your JSON file path is correct.</p>
+        </div>
+      `;
+      console.error(error);
     }
+  }
 
-  </script>
+  document.addEventListener('DOMContentLoaded', loadRecipe);
+</script>
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
