@@ -461,7 +461,7 @@
       <p>Loading recipe...</p>
     </section>
   </main>
-
+  <script src="assets/js/recipes.js"></script>
   <script>
     function getRecipeIdFromUrl() {
       const params = new URLSearchParams(window.location.search);
@@ -469,15 +469,7 @@
     }
 
     function getRecipePath(recipeId) {
-      const validIds = [
-        'chicken-stock-broth',
-        'shepherds-pie',
-        'buttermilk-brine',
-        'country-gravy-sausage',
-        'bourbon-brown-sugar-bbq-sauce',
-        'buttermilk-biscuits',
-        'zesty-holiday-dip'
-      ];
+      const validIds = RECIPES;
 
       if (!recipeId || !validIds.includes(recipeId)) {
         return null;

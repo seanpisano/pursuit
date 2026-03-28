@@ -260,17 +260,9 @@
       <div id="cards" class="cards-grid"></div>
     </section>
   </main>
-
+  <script src="assets/js/recipes.js"></script>
   <script>
-    const recipeList = [
-      'chicken-stock-broth',
-      'shepherds-pie',
-      'buttermilk-brine',
-      'country-gravy-sausage',
-      'bourbon-brown-sugar-bbq-sauce',
-      'buttermilk-biscuits',
-      'zesty-holiday-dip'
-    ];
+    const recipeList = RECIPES;
 
     const cards = document.getElementById('cards');
     const sortButtons = document.querySelectorAll('.sort-btn');
