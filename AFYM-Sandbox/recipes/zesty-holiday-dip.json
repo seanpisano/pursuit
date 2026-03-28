@@ -1,0 +1,70 @@
+{
+  "id": "zesty-holiday-dip",
+  "title": "Zesty Holiday Dip",
+  "category": "Dips",
+  "cuisine": "American",
+  "description": "Bright, sharp, and clean. This dip cuts through heavy holiday food with lemon, mustard, and parmesan bringing the punch. Light but not boring.",
+  "image": "assets/imgs/zesty-holiday-dip.png",
+  "prepTime": "25 mins",
+  "cookTime": "0 mins",
+  "totalTime": "25 mins",
+  "prepTimeISO": "PT25M",
+  "cookTimeISO": "PT0M",
+  "totalTimeISO": "PT25M",
+  "servings": "8 servings (2 tbsp each)",
+  "difficulty": "Easy",
+  "flavorProfile": "Zesty, tangy, savory, fresh",
+
+  "searchTerms": [
+    "zesty dip",
+    "holiday dip",
+    "lemon parmesan dip",
+    "healthy dip",
+    "yogurt dip",
+    "mustard dip",
+    "vegetable dip",
+    "quick party dip",
+    "light appetizer dip",
+    "savory yogurt dip"
+  ],
+
+  "tags": [
+    "Dip",
+    "Appetizer",
+    "Holiday",
+    "Quick",
+    "Vegetarian",
+    "Light"
+  ],
+
+  "ingredients": [
+    "1 cup strained yogurt",
+    "1/4 cup grated Parmesan cheese",
+    "2 tbsp lemon juice",
+    "1 tbsp Dijon mustard",
+    "1 tbsp olive oil",
+    "1 tsp garlic (chopped)",
+    "Salt (to taste)",
+    "Cracked black pepper (to taste)"
+  ],
+
+  "instructions": [
+    "Strain yogurt for 20 minutes using a strainer or colander over a bowl to remove excess liquid.",
+    "In a medium bowl, combine strained yogurt, Parmesan cheese, lemon juice, Dijon mustard, olive oil, and chopped garlic.",
+    "Mix well until smooth and fully combined.",
+    "Season with salt and cracked black pepper to taste.",
+    "Serve chilled with fresh vegetables."
+  ],
+
+  "notes": [
+    "Straining the yogurt makes the dip thicker and more spreadable.",
+    "Use Greek yogurt if you want to skip the straining step.",
+    "Let it sit for 10 minutes before serving to let flavors develop."
+  ],
+
+  "whyThisHits": "It brings acid, fat, and salt into perfect balance. Light enough to not weigh you down, but still delivers real flavor.",
+
+  "pairing": "Serve with carrots, celery, cucumbers, or crackers. Also works as a spread on sandwiches or wraps.",
+
+  "footerLine": "Art for Your Mouth. Because boring food is a waste of time."
+}
